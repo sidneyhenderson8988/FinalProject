@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const Budget = require("../models/budget_schema");
 
-router.get("/myBudget", (req,res) => {
-    Budget.find().then((budget) => {
+router.get("/:username", (req,res) => {
+    const {username} = req.params;
+    Budget.find({username: username}).then((budget) => {
         if (!budget){
             return res.status(404).json({error: "Theres no data."});
         }
@@ -16,13 +17,14 @@ router.post("/register", (req,res) => {
         title: req.body.title,
         budget: req.body.budget,
         color: req.body.color,
+        username: req.body.username,
     });
     newBudget.save().then((budget) => res.status(201).json(budget)).catch((err) => console.log(err));
 });
 
 router.delete("/delete/:id", (req,res) => {
     const {id} = req.params;
-    budget.remove({_id:id}).then((data) => res.status(200).json(data)).catch((e) => {
+    Budget.remove({_id:id}).then((data) => res.status(200).json(data)).catch((e) => {
         console.log(e);
         res.status(404).json(e);
     });
@@ -30,7 +32,7 @@ router.delete("/delete/:id", (req,res) => {
 
 router.put("/update/:id", (req,res) => {
     const {id} = req.params;
-    budget.updateOne(
+    Budget.updateOne(
         {_id:id},
         {
             $set:{

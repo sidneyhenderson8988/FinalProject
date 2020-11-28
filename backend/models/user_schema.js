@@ -12,25 +12,14 @@ const userSchema = new Schema({
     },
     userType:{
         type: String,
-        default: "normal"
-    },
-    budget:[
-        {
-            title: {
-                type: String,
-                required: true,
-            },
-            budget: {
-                type: Number,
-                required: true,
-            },
-            color: {
-                type: String,
-                required: true,
-                minlength: 7, 
-                maxlength: 7,
-            },
+        default: function(){
+            if(this.userType === "admin" || this.userType === "Admin"){
+                return "admin"
+            }
+            else {
+                return "normal"
+            }
         }
-    ]
+    },
 });
 module.exports=mongoose.model("userCollection", userSchema);

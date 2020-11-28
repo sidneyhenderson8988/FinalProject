@@ -15,7 +15,11 @@ const budgetSchema = new Schema({
         required: true,
         minlength: 7, 
         maxlength: 7,
-    }
+    },
+    username: {
+        type: String,
+        required: true,
+    },
 
 }, {collection: 'budgetCollection'})
 
