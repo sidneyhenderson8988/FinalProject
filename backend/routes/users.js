@@ -76,8 +76,9 @@ router.post("/login", (req,res) => {
                     payLoad,
                     key.secretKey,
                     {expiresIn: 60},
-                    (err, token) => {
-                        res.status(200).json({
+                    (err, token) =>
+                     {
+                        res.json({
                             success:true,
                             token: "Token Data " + token, 
                         });

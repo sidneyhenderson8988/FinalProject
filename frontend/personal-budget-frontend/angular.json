@@ -3,9 +3,13 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "finalproject": {
+    "personal-budget-frontend": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/finalproject",
+            "outputPath": "dist/personal-budget-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,7 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -61,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "finalproject:build"
+            "browserTarget": "personal-budget-frontend:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "finalproject:build:production"
+              "browserTarget": "personal-budget-frontend:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "finalproject:build"
+            "browserTarget": "personal-budget-frontend:build"
           }
         },
         "test": {
@@ -87,7 +91,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -109,16 +113,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "finalproject:serve"
+            "devServerTarget": "personal-budget-frontend:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "finalproject:serve:production"
+              "devServerTarget": "personal-budget-frontend:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "finalproject"
+  "defaultProject": "personal-budget-frontend"
 }
