@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Users } from './../../model/users';
+import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -6,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
+  user: Users = new Users();
+  error: any = {};
 
-  constructor() { }
+  constructor(private router: Router, private userService: UserService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
+    registerUser(){
+      this.userService.registerUser(this.user).subscribe((res) => {
+      this. router.navigate(['/login']);
+      },
+      (err) => {
+        this.error = err.error;
+        this.router.navigate(['/register']);
+      }
+      );
+    }
 }
