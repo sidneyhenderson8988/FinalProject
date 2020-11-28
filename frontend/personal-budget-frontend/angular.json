@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "personal-budget-frontend"
+  "defaultProject": "personal-budget-frontend",
+  "cli": {
+    "analytics": false
+  }
 }
