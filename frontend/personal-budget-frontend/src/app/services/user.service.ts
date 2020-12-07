@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpClientModule} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Users } from '../model/users';
+import jwt_decode from 'jwt-decode';
 
 const api = 'http://localhost:3000/users/';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +13,19 @@ const api = 'http://localhost:3000/users/';
 export class UserService {
   constructor(private httpClient: HttpClient) { }
 
-registerUser(user: Users): Observable<Users>{
-  return this.httpClient.post<Users>(api + 'register', user);
-}
+  getUsers(): Observable<Users[]> {
+    return this.httpClient.get<Users[]>(api + 'allUsers');
+  }
 
-addUser(user: Users): Observable<Users>{
-  return this.httpClient.post<Users>(api + 'addUser', user);
-}
+  registerUser(user: Users): Observable<Users>{
+    return this.httpClient.post<Users>(api + 'register', user);
+  }
 
-login(user: Users): Observable<Users>{
-  return this.httpClient.post<Users>(api + 'login' , user);
-}
+  addUser(user: Users): Observable<Users>{
+    return this.httpClient.post<Users>(api + 'addUser', user);
+  }
 
+  loginUser(user: Users): Observable<Users>{
+    return this.httpClient.post<Users>(api + 'login' , user);
+  }
 }
