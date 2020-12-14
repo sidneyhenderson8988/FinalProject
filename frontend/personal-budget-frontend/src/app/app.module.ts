@@ -14,6 +14,9 @@ import { ViewComponent } from './budget/view/view.component';
 import { UpdateComponent } from './budget/update/update.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { BarComponent } from './bar/bar.component';
+import { PieComponent } from './pie/pie.component';
+import { ScatterComponent } from './scatter/scatter.component';
 
 const routes: Routes = [
   {
@@ -60,7 +63,10 @@ const routes: Routes = [
     ViewComponent,
     UpdateComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    BarComponent,
+    PieComponent,
+    ScatterComponent
   ],
   imports: [
     BrowserModule,
