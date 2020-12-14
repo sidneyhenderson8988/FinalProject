@@ -9,6 +9,11 @@ import { LoginComponent } from './register/login/login.component';
 import { SignupComponent } from './register/signup/signup.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './auth/auth.guard';
+import { RegisterComponent } from './budget/register/register.component';
+import { ViewComponent } from './budget/view/view.component';
+import { UpdateComponent } from './budget/update/update.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const routes: Routes = [
   {
@@ -28,6 +33,21 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path: 'addbudget',
+    component: RegisterComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'viewbudget',
+    component: ViewComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'updatebudget',
+    component: UpdateComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
@@ -35,7 +55,12 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent,
+    ViewComponent,
+    UpdateComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

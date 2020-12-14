@@ -6,11 +6,11 @@ import {Router} from '@angular/router';
 import jwt_decode from 'jwt-decode';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-view',
+  templateUrl: './view.component.html',
+  styleUrls: ['./view.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class ViewComponent implements OnInit {
 
   budget: Budget[];
   user: any;
@@ -26,8 +26,19 @@ export class HomeComponent implements OnInit {
     console.log(this.userName);
     this.brs.getBudgetByUser(this.userName).subscribe((data) => {
       this.budget = data;
-      console.log(this.budget);
     });
+  }
+
+  updateBudget(budget: Budget) {
+    this.brs.setBudget(budget);
+    this.router.navigate(['/updatebudget']);
+  }
+
+  deleteBudget(budget: Budget) {
+    this.brs.deleteBudgets(budget).subscribe();
+    alert(' Successfully deleted!');
+    location.reload();
+    console.log(JSON.stringify(budget));
   }
 
 }
